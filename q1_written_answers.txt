@@ -1,0 +1,42 @@
+Question1
+
+First I examines the .dat files using cat *dat to see some patterns like Kg, m... using cat command
+
+a) knowing that sort -n *.dat I get all the files containing .dat but sorted numerically: I get I found a way to combine it with and  to get only the first fields of the sorted
+the complete command is awk '{print $1}' *dat|sort -n 
+we get 
+
+104kg
+364kg
+450kg
+1000kg
+1800kg
+4900kg
+29000kg
+110000kg
+
+b) same logic as the previous one but replacing $1 by $2( second field) and r by nr(reverse sorted). we get 
+
+24m
+13.5m
+6m
+5.15m
+4.5m
+4m
+2.1m
+2.0m
+
+
+c) Same logic but instead of sorting all files containing .dat we sort hippopotamus.dat and elephant.dat first field (weight) . we type '{print $1}' hippopotamus.dat elephant.dat| sort -nr and we get
+4900kg
+1800kg
+
+So the first input hippopotamus is heavier
+
+d) to do so I used sed -i .bak 's/$(awk '{print $1}' crocodile.dat)kg/($(awk '{print $1}' crocodile.dat)kg+2)kg/g' crocodile.dat
+basically replacing the first filed next to crocodile
+450 to by the same thing +2 (452 )in the file crocodile.dat . The .bak is for backup
+
+e) I simply used rm giraffe.* that remove all the file starting by giraffe. namely giraffe.dat and giraffe.jpg
+
+
